@@ -1,0 +1,16 @@
+version: "3.4"
+services:
+
+  mongo:
+    image: mongo
+    container_name: SpaceAppChallenge
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: saChallenge
+      MONGO_INITDB_ROOT_PASSWORD: super_password
+    
+    volumes:
+      - ~/db/sac2020:/data/db
+
+    ports:
+      - 27017:27017
