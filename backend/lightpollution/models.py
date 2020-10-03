@@ -2,6 +2,8 @@ from django.db import models
 from mongoengine import Document
 from mongoengine.fields import (
     StringField,
+    FloatField,
+    ListField,
     ObjectIdField,
 )
 
@@ -12,4 +14,7 @@ class LightPollution(Document):
     meta = {"collection": "lightpollution"}
 
     ID = ObjectIdField()
-    prueba = StringField()
+    sourceposition = ListField()
+    targetPosition = ListField()
+    longitude = FloatField()
+    latitude = FloatField()

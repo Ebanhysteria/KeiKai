@@ -8,23 +8,29 @@ from .types import LightPollutionType
 
 class LightPollutionInput(graphene.InputObjectType):
     id = graphene.ID()
-    prueba = graphene.String()
+    longitude = graphene.Float()
+    latitude = graphene.Float()
+    sourceposition = graphene.List(graphene.Float)
+    targetPosition = graphene.List(graphene.Float)
 
 class CreateLightPollutionMutation(graphene.Mutation):
 
-    light_p = graphene.Field(LightPollutionType)
+    light_pollution = graphene.Field(LightPollutionType)
 
     class Arguments:
-        light_p_data = LightPollutionInput(required=True)
+        light_pollution_data = LightPollutionInput(required=True)
 
-    def mutate(self, info, light_p_data=None):
+    def mutate(self, info, light_pollution_data=None):
 
-        light_p = LightPollution(
-            prueba = light_p_data.prueba,
+        light_pollution = LightPollution(
+            longitude = light_pollution_data.longitude,
+            latitude = light_pollution_data.latitude,
+            sourceposition = light_pollution_data.sourceposition,
+            targetPosition = light_pollution_data.targetPosition,
         )
 
-        light_p.save()
+        light_pollution.save()
 
         return CreateLightPollutionMutation(
-            light_p = light_p,
+            light_pollution=light_pollution
         )
