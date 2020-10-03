@@ -40,6 +40,9 @@ environ.Env.read_env(env.str('ENV_PATH', '.env'))
 
 # Application definition
 
+# CORS  
+CORS_ORIGIN_ALLOW_ALL = True
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
