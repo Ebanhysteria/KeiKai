@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 import DeckGL from '@deck.gl/react';
-import { LineLayer } from '@deck.gl/layers';
-import { StaticMap } from 'react-map-gl';
+
+import {StaticMap, Source, Layer} from 'react-map-gl';
 import { useQuery, gql } from '@apollo/client';
+import {HeatmapLayer} from '@deck.gl/aggregation-layers';
 
 // GraphQL Queries
 const TEST_QUERY = gql`
@@ -11,7 +12,8 @@ query {
       edges{
         node{
           id,
-          prueba
+          latitude,
+          longitude
         }
       }
     }
@@ -25,43 +27,82 @@ const MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoibWFudWVsY2hpbWFsIiwiYSI6ImNrZnM5d2NvZjEx
 
 // Viewport settings
 const INITIAL_VIEW_STATE = {
-    longitude: -122.41669,
-    latitude: 37.7853,
-    zoom: 13,
+    longitude: -124.07404299999999,
+    latitude:  40.886975,
+    zoom: 2,
     pitch: 0,
     bearing: 0
   };
   
-  // Data to be used by the LineLayer
-  const data = [
-    {sourcePosition: [-122.41669, 37.7853], targetPosition: [-122.41669, 37.781]}
-  ];
-
+const LIGHT_URL = 'https://keikai-data.s3.us-east-2.amazonaws.com/NTL/10km/NTL_2014_10.json' // 
+const BAT_URL = 'https://keikai-data.s3.us-east-2.amazonaws.com/Chiroptera_gbif/Tadarida_brasiliensis_2014.0.json' // eslint-disable-line
   
 
 
+
+
+// Function to fetch data
+
+function fetchData(url, handleState){
+  fetch(url)
+    .then(response => response.json())
+    .then((jsonData) => {
+      // jsonData is parsed json object received from url
+      handleState(jsonData);
+    })
+    .catch((error) => {
+      // handle your errors here
+      console.error(error)
+    })
+}
+
 const MapKeikai = () => {
-    // GraphQl
-    const { loading, error, data } = useQuery(TEST_QUERY);
+    const [batdata, handleBatdata] = useState([]);
+    const [lightdata, handleLightdata] = useState([]);
 
-    if (data){
-        console.log(data)
-    }
+    
 
+    useEffect(() =>{
+      fetchData(LIGHT_URL, handleLightdata);
+      fetchData(BAT_URL, handleBatdata);
+
+    }, [])
+    
+
+        
     const layers = [
-        new LineLayer({id: 'line-layer', data})
+        new HeatmapLayer({
+          data: lightdata,
+          id: 'heatmp-light',
+          getPosition: d => d.COORDINATES,
+          getWeight: d => d.WEIGHT,
+          radiusPixels: 10,
+        }),
+        new HeatmapLayer({
+          data: batdata,
+          id: 'heatmp-bats',
+          getPosition: d => d.COORDINATES,
+          getWeight: d => d.WEIGHT,
+          radiusPixels: 20,
+          colorRange: [[1, 152, 189, 255], [73, 227, 206, 255], [216, 254, 181, 255], [254, 237, 177, 255],[254, 173, 84, 255],[209, 55, 78, 255]]
+        }),
+
     ]
+
+
 
     return (
         <> 
-            {loading ? null : <p>Listo</p>}
             <DeckGL
             initialViewState={INITIAL_VIEW_STATE}
             controller={true}
             layers={layers}
             >
-                
-                <StaticMap mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN} />
+              <StaticMap 
+              mapStyle='mapbox://styles/mapbox/dark-v9'   
+              preventStyleDiffing={true} 
+              mapboxApiAccessToken={MAPBOX_ACCESS_TOKEN}/>
+               
             </DeckGL>
         </>
      );
