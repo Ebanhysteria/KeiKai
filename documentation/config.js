@@ -9,8 +9,8 @@ const config = {
     logo: '',
     logoLink: 'https://keikai.com',
     title:
-      "<a href='https://hasura.io/learn/'><img class='img-responsive' src='https://graphql-engine-cdn.hasura.io/learn-hasura/assets/homepage/learn-logo.svg' alt='Learn logo' /></a>",
-    githubUrl: 'https://graphql-engine-cdn.hasura.io/learn-hasura/assets/homepage/brand.svg',
+      "",
+    githubUrl: 'https://github.com/KeiKai',
     helpUrl: '',
     tweetText: '',
     social: `<li>
@@ -54,7 +54,7 @@ const config = {
     title: 'Gatsby Gitbook Boilerplate | Hasura',
     description: 'Documentation built with mdx. Powering hasura.io/learn ',
     ogImage: null,
-    docsLocation: 'https://github.com/hasura/gatsby-gitbook-boilerplate/tree/master/content',
+    docsLocation: 'https://github.com/KeiKai',
     favicon: 'https://graphql-engine-cdn.hasura.io/img/hasura_icon_black.svg',
   },
   pwa: {
@@ -69,7 +69,7 @@ const config = {
       crossOrigin: 'use-credentials',
       icons: [
         {
-          src: 'src/pwa-512.png',
+          src: '',
           sizes: `512x512`,
           type: `image/png`,
         },
