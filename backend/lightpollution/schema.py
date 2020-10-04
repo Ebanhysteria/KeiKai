@@ -6,13 +6,13 @@ from .types import LightPollutionType
 from .mutations import CreateLightPollutionMutation
 
 class LightPollutionMutations(graphene.ObjectType):
-    create_light_p = CreateLightPollutionMutation.Field()
+    create_light_pollution = CreateLightPollutionMutation.Field()
 
 class LightPollutionQuery(graphene.ObjectType):
-    light_p_ = Node.Field(LightPollutionType)
-    light_p_list = MongoengineConnectionField(LightPollutionType)
+    light_pollution_ = Node.Field(LightPollutionType)
+    light_pollution_list = MongoengineConnectionField(LightPollutionType)
     
-    def resolve_light_p_list(self, info, **kwargs):
+    def resolve_light_pollution_list(self, info, **kwargs):
         
         if kwargs:
             return LightPollution.objects.filter(**kwargs)
