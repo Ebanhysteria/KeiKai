@@ -1,7 +1,6 @@
 import graphene
 from graphql import GraphQLError
 from django.core.exceptions import ObjectDoesNotExist
-from datetime import datetime
 
 from .models import LightPollution
 from .types import LightPollutionType
