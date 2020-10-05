@@ -3,18 +3,21 @@ import React from 'react';
 // Apollo
 import { ApolloProvider } from '@apollo/client';
 import clientApollo from './config/apollo';
+import MapState from './context/map/mapState';
 
 
-import './App.css';
+// import './App.css';
 
-import MapKeikai from './components/Map';
+import MapPage from './pages/Map'
 
 function App() {
   return (
     <ApolloProvider client={clientApollo}>
-      <div className="App">
-        <MapKeikai/>
-      </div>
+      <MapState>
+        <div className="App">
+          <MapPage/>
+        </div>
+      </MapState>
     </ApolloProvider>
   );
 }
