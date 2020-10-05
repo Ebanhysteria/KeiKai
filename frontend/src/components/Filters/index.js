@@ -1,7 +1,8 @@
 import React, { useContext, useState } from 'react';
-import { Select,  Radio, Divider } from 'antd';
+import { Select,  Radio, Divider, Badge } from 'antd';
 import MapContext from '../../context/map/mapContext';
 import {FlyToInterpolator} from 'deck.gl';
+
 
 const { Option } = Select;
 
@@ -188,7 +189,14 @@ const Filters = () => {
                 <Option value="2018">2018</Option>
 
             </Select>
+            <Divider/>
+            <Badge color="#33cc33" text="Protected area" />
+            <br/>
+            <Badge color="#993333" text="Light pollution" />
         </div>
+
+        
+        
     );
 }
  

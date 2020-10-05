@@ -1,13 +1,13 @@
 const config = {
   gatsby: {
     pathPrefix: '/',
-    siteUrl: 'https://keikai.com',
+    siteUrl: 'http://keikai-map.s3-website-us-east-1.amazonaws.com/',
     gaTrackingId: null,
     trailingSlash: false,
   },
   header: {
     logo: '',
-    logoLink: 'https://keikai.com',
+    logoLink: 'http://keikai-map.s3-website-us-east-1.amazonaws.com/',
     title:
       "",
     githubUrl: 'https://github.com/KeiKai',
@@ -38,26 +38,26 @@ const config = {
   },
   sidebar: {
     forcedNavOrder: [
-      '/about project', // add trailing slash if enabled above
-      '/light pollution and biodiversity',
+      '/about project',
+      '/light pollution and biodiversity', // add trailing slash if enabled above
       '/project development'
     ],
     collapsedNav: [
       '/light pollution and biodiversity',
       '/project development', // add trailing slash if enabled above
     ],
-    links: [{ text: 'Keikai', link: 'https://keikai.com' }],
+    links: [{ text: 'Keikai', link: 'http://keikai-map.s3-website-us-east-1.amazonaws.com/' }],
     frontline: false,
     ignoreIndex: true,
     title:
-      "<a href='https://keikai.com'>Keikai </a><div class='greenCircle'></div><a href='https://www.spaceappschallenge.org/'>NASA</a>",
+      "<a href='http://keikai-map.s3-website-us-east-1.amazonaws.com/'>Keikai </a><div class='greenCircle'></div><a href='https://www.spaceappschallenge.org/'>NASA</a>",
   },
   siteMetadata: {
-    title: 'Gatsby Gitbook Boilerplate | Hasura',
-    description: 'Documentation built with mdx. Powering hasura.io/learn ',
+    title: 'Keikai',
+    description: '',
     ogImage: null,
     docsLocation: 'https://github.com/KeiKai',
-    favicon: 'https://graphql-engine-cdn.hasura.io/img/hasura_icon_black.svg',
+    favicon: 'https://keikai-documentation.s3.amazonaws.com/pwa-512.svg',
   },
   pwa: {
     enabled: false, // disabling this will also remove the existing service worker.
