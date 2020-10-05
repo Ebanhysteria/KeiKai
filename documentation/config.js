@@ -38,13 +38,12 @@ const config = {
   },
   sidebar: {
     forcedNavOrder: [
-      '/about project',
-      '/light pollution and biodiversity', // add trailing slash if enabled above
+      // '/about project',
       '/project development'
     ],
     collapsedNav: [
-      '/light pollution and biodiversity',
-      '/project development', // add trailing slash if enabled above
+      '/about project',
+      // '/project development', // add trailing slash if enabled above
     ],
     links: [{ text: 'Keikai', link: 'http://keikai-map.s3-website-us-east-1.amazonaws.com/' }],
     frontline: false,

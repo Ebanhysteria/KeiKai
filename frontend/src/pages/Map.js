@@ -4,6 +4,7 @@ import MapKeikai from '../components/Map';
 import Filters from '../components/Filters'
 import styled from '@emotion/styled';
 
+
 const { Header, Footer, Sider, Content } = Layout;
 
 
@@ -26,7 +27,7 @@ const MapPage = () => {
         <>
             <LayoutStyled>
                 <HeaderStyled>
-                    <h1>Keikai</h1>
+                    <h1>The expansion of artificial night light into sanctuaries of biodiversity</h1>
                 </HeaderStyled>
                 <Layout>
                     <SiderStyled

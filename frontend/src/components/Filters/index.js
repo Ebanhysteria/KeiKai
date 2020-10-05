@@ -2,8 +2,9 @@ import React, { useContext, useState } from 'react';
 import { Select,  Radio, Divider, Badge } from 'antd';
 import MapContext from '../../context/map/mapContext';
 import {FlyToInterpolator} from 'deck.gl';
-
-
+import {
+    FileTextOutlined
+  } from '@ant-design/icons';
 const { Option } = Select;
 
 
@@ -108,14 +109,47 @@ const Filters = () => {
                     
                     changePolygons(['https://keikai-data.s3.us-east-2.amazonaws.com/protected_polygons/Laos_polygon.json']);
                     break;
+            case "Mexico":
+                changeRegion(e.target.value);
+
+                changeInitialViewState({
+                    "longitude": -97.552784,
+                    "latitude":  23.634501,
+                    "zoom": 4.5,
+                    "maxZoom": 4.5,
+                    "pitch": 0,
+                    "bearing": 0,
+                    "transitionDuration": 3000,
+                    "transitionInterpolator": new FlyToInterpolator()
+                })
+                
+                changePolygons(['https://keikai-data.s3.us-east-2.amazonaws.com/protected_polygons/Mexico_polygon.json']);
+                break;
+
+            case "Brazil":
+                changeRegion(e.target.value);
+
+                changeInitialViewState({
+                    "longitude": -48.92528,
+                    "latitude":  -14.235004,
+                    "zoom": 4,
+                    "maxZoom": 4,
+                    "pitch": 0,
+                    "bearing": 0,
+                    "transitionDuration": 3000,
+                    "transitionInterpolator": new FlyToInterpolator()
+                })
+                
+                changePolygons(['https://keikai-data.s3.us-east-2.amazonaws.com/protected_polygons/Brasil_polygon.json']);
+                break;
             default:
                 changeRegion(e.target.value);
 
                 changeInitialViewState({
                     "longitude": 127.857694,
                     "latitude":  36.697944,
-                    "zoom": 5,
-                    "maxZoom": 5,
+                    "zoom": 4,
+                    "maxZoom": 4,
                     "pitch": 0,
                     "bearing": 0,
                     "transitionDuration": 3000,
@@ -151,6 +185,12 @@ const Filters = () => {
                 </Radio>
                 <Radio style={radioStyle} value="Cambodia">
                     Cambodia
+                </Radio>
+                <Radio style={radioStyle} value="Mexico">
+                    Mexico
+                </Radio>
+                <Radio style={radioStyle} value="Brazil">
+                    Brazil
                 </Radio>
             </Radio.Group>
             <Divider/>
@@ -193,6 +233,8 @@ const Filters = () => {
             <Badge color="#33cc33" text="Protected area" />
             <br/>
             <Badge color="#993333" text="Light pollution" />
+            <Divider/>
+            <a href="http://keikai-documentation.s3-website-us-east-1.amazonaws.com/" target="_blank" rel="noopener noreferrer">Documentation <FileTextOutlined/></a>
         </div>
 
         
