@@ -38,11 +38,13 @@ const config = {
   },
   sidebar: {
     forcedNavOrder: [
-      '/introduction', // add trailing slash if enabled above
-      '/light_pollution',
+      '/about project', // add trailing slash if enabled above
+      '/light pollution and biodiversity',
+      '/project development'
     ],
     collapsedNav: [
-      '/light_pollution', // add trailing slash if enabled above
+      '/light pollution and biodiversity',
+      '/project development', // add trailing slash if enabled above
     ],
     links: [{ text: 'Keikai', link: 'https://keikai.com' }],
     frontline: false,
