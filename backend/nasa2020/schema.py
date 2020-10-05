@@ -1,13 +1,13 @@
 import graphene
 
-from lightpollution.schema import LightPollutionMutations, LightPollutionQuery
+from lightpollution.schema import LightPollutionMutations, LightPollutionQuery, SpeciesQuery, SpeciesMutations
 
 
-class Query(LightPollutionQuery, graphene.ObjectType):
+class Query(LightPollutionQuery, SpeciesQuery, graphene.ObjectType):
     pass
 
 
-class Mutations(LightPollutionMutations, graphene.ObjectType):
+class Mutations(LightPollutionMutations, SpeciesMutations, graphene.ObjectType):
     pass
 
 
