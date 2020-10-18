@@ -3,7 +3,8 @@ import { Select,  Radio, Divider, Badge } from 'antd';
 import MapContext from '../../context/map/mapContext';
 import {FlyToInterpolator} from 'deck.gl';
 import {
-    FileTextOutlined
+    FileTextOutlined,
+    GithubOutlined
   } from '@ant-design/icons';
 const { Option } = Select;
 
@@ -235,6 +236,8 @@ const Filters = () => {
             <Badge color="#993333" text="Light pollution" />
             <Divider/>
             <a href="http://keikai-documentation.s3-website-us-east-1.amazonaws.com/" target="_blank" rel="noopener noreferrer">Documentation <FileTextOutlined/></a>
+            <br/>
+            <a href="https://github.com/Ebanhysteria/KeiKai" target="_blank" rel="noopener noreferrer">Keikai Github <GithubOutlined /></a>
         </div>
 
         
